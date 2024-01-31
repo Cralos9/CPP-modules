@@ -5,23 +5,23 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/29 10:40:07 by cacarval          #+#    #+#              #
-#    Updated: 2024/01/30 10:56:52 by cacarval         ###   ########.fr        #
+#    Created: 2024/01/31 11:57:51 by cacarval          #+#    #+#              #
+#    Updated: 2024/01/31 11:59:59 by cacarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fixed
+NAME = ClapTrap
 
-SRCS = main.cpp Fixed.cpp
+SRCS = ClapTrap.cpp main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
-CPPFLAGS = -Wall -Werror -Wextra -pedantic -std=c++98
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 
-$(NAME) : ${OBJS}
-		c++ ${CPPFLAGS} ${OBJS} -o ${NAME}
+$(NAME): ${OBJS}
+	c++ ${CPPFLAGS} ${OBJS} -o ${NAME}
 
-all: ${NAME}
+all : ${NAME}
 
 clean:
 	rm -f ${OBJS}
@@ -30,4 +30,3 @@ fclean:	clean
 	rm -f ${NAME}
 
 re: fclean all
-

@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 10:40:01 by cacarval          #+#    #+#             */
-/*   Updated: 2024/01/29 15:23:52 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:00:47 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 class Fixed
 {
 	private:
-	int fixednbr;
-	static const int nbr_bits = 8;
+	int _fixednbr;
+	static const int _nbr_bits = 8;
 
 	public:
 
