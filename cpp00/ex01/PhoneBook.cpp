@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 10:59:14 by cacarval          #+#    #+#             */
-/*   Updated: 2024/01/24 12:10:24 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:56:23 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ PhoneBook::PhoneBook(void)
 
 PhoneBook::~PhoneBook(void) {}
 
+int ft_isdigit(std::string number)
+{
+	int i = 0;
+
+	while(number[i])
+	{
+		if(number[i] < '0' || number[i] > '9')
+			return(1);
+		i++;
+	}
+	return(0);
+}
 void PhoneBook::add(void)
 {
 	std::string firstname, lastname, nickname, number, secret;
@@ -38,7 +50,7 @@ void PhoneBook::add(void)
 	std::getline(std::cin, secret);
 
 	if (firstname.length() < 1 || lastname.length() < 1 || nickname.length() < 1
-		|| number.length() < 1 || secret.length() < 1)
+		|| number.length() < 9 || secret.length() < 1 || ft_isdigit(number))
 		{
 			std::cout << RED"Contact not added all information must be filled"RESET << std::endl;
 			std::cout << YELLOW"Press ENTER to continue."RESET << std::endl;
