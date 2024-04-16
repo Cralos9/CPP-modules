@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 12:29:05 by cacarval          #+#    #+#             */
-/*   Updated: 2024/04/08 12:37:00 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:13:50 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ Cure::~Cure()
 	std::cout << "[Cure] destructor called" << std::endl;
 }
 
-void use(ICharacter& target)
+void Cure::use(ICharacter& target)
 {
 	std::cout << "* heals "<< target.getName() <<"’s wounds *"<< std::endl;
+}
+
+AMateria *Cure::clone() const
+{
+	return(new Cure);
 }

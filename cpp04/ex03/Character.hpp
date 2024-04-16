@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:43:02 by cacarval          #+#    #+#             */
-/*   Updated: 2024/04/08 12:18:05 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:34:33 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,38 @@
 
 #include <iostream>
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class ICharacter
+
+typedef struct s_test
+{
+
+	struct s_test *next;
+	AMateria *atum; 
+
+}	t_test;
+
+
+class Character : public ICharacter
 {
 	private:
 	std::string _name;
+	int _inventoryCount;
+	AMateria *_inventory[4];
 	
 	public:
-	ICharacter(std::string name);
-	virtual ~ICharacter() {}
-	virtual std::string const & getName() const = 0;
-	virtual void equip(AMateria* m) = 0;
-	virtual void unequip(int idx) = 0;
-	virtual void use(int idx, ICharacter& target) = 0;
+	Character();
+	Character(std::string name);
+	Character(const Character &copy);
+	~Character();
+	void cleanspace();
+	Character & operator = (Character const & src);
+	void equip(AMateria* m);
+	std::string const & getName() const;
+	void unequip(int idx);
+	void use(int idx, ICharacter& target);
+	t_test *azul;
+	t_test *head;
 };
 
 #endif

@@ -5,24 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 11:37:49 by cacarval          #+#    #+#             */
-/*   Updated: 2024/04/16 11:01:34 by cacarval         ###   ########.fr       */
+/*   Created: 2024/04/16 12:29:08 by cacarval          #+#    #+#             */
+/*   Updated: 2024/04/16 15:27:04 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "DiamondTrap.hpp"
+#include "AMateria.hpp"
+#include "Character.hpp"
+#include "MateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 int main()
 {
-	DiamondTrap first("Bill");
-	std::string name;
-
-	// std::cout <<"Choose a name" << std::endl;
-	// getline(std::cin, name);
-	// first = name;
-	first.highFivesGuys();
-	first.guardGate();
-	first.attack("Ducks");
-	first.whoAmI();
-	
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	ICharacter* bob = new Character("bob");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	me->equip(tmp);
+	// tmp = src->createMateria("cure");
+	// me->equip(tmp);
+	// me->use(0, *bob);
+	me->use(0, *bob);
+	me->unequip(0);
+	delete bob;
+	delete me;
+	delete src;
+	return 0;
 }

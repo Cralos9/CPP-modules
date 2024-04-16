@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:38:10 by cacarval          #+#    #+#             */
-/*   Updated: 2024/04/08 12:35:35 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:10:51 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include "Character.hpp"
+#include "ICharacter.hpp"
 
 
 class AMateria
@@ -25,6 +26,7 @@ class AMateria
 	public:
 	AMateria(std::string const & type);
 	AMateria(const AMateria &copy);
+	virtual ~AMateria();
 	std::string const & getType() const; //Returns the materia type
 	virtual AMateria* clone() const = 0;
 	virtual void use(ICharacter& target);
