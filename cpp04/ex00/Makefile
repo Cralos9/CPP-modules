@@ -6,7 +6,7 @@
 #    By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 11:57:51 by cacarval          #+#    #+#              #
-#    Updated: 2024/03/20 15:25:01 by cacarval         ###   ########.fr        #
+#    Updated: 2024/05/02 10:47:33 by cacarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,12 @@ GREEN := \e[1;32m
 RED := \e[1;31m
 RESET := \033[0m
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CXX = c++
+
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 $(NAME): ${OBJS}
-	c++ ${CPPFLAGS} ${OBJS} -o ${NAME}
+	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
 	@echo "${GREEN}Animal file was created ${RESET}"
 
 all : ${NAME}

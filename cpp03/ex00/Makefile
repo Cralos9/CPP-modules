@@ -6,7 +6,7 @@
 #    By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 11:57:51 by cacarval          #+#    #+#              #
-#    Updated: 2024/04/15 14:21:39 by cacarval         ###   ########.fr        #
+#    Updated: 2024/04/26 10:42:02 by cacarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,6 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 $(NAME): ${OBJS}
 	${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
-
-$(NAME): ${OBJS}
-	c++ ${CXXFLAGS} ${OBJS} -o ${NAME}
 
 all : ${NAME}
 

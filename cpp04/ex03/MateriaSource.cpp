@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:49:30 by cacarval          #+#    #+#             */
-/*   Updated: 2024/04/16 15:02:47 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/04/17 15:21:34 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@
 
 MateriaSource::MateriaSource()
 {
-	std::cout << "[MateriaSource] constructor called" << std::endl;
+	// std::cout << "[MateriaSource] constructor called" << std::endl;
 	this->_storageCount = 0;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &copy)
 {
-	std::cout << "[MateriaSource] copy constructor called" << std::endl;
+	// std::cout << "[MateriaSource] copy constructor called" << std::endl;
 	*this = copy;
 }
 
 
 MateriaSource::~MateriaSource() 
 {
-	std::cout << "[MateriaSource] destructor called" << std::endl;
+	// std::cout << "[MateriaSource] destructor called" << std::endl;
 	for (int i = 0; i < this->_storageCount; i++)
 		delete this->_storage[i];
 }
@@ -57,7 +57,10 @@ void MateriaSource::learnMateria(AMateria* materia)
 		this->_storage[this->_storageCount++] = materia;
 	}
 	else
+	{
 		std::cout << "Storage is full" << std::endl;
+		delete materia;
+	}
 
 }
 

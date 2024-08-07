@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:37:49 by cacarval          #+#    #+#             */
-/*   Updated: 2024/04/15 10:49:21 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/04/17 10:43:38 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main()
 	std::cout <<"Press ENTER to continue" << std::endl;
 	std::cin.ignore();
 	std::cout << CLEAR;
-	first.attack("Ducks");
+	first.attack("Duck");
 	first.takeDamage(9);
 	std::cout << "ClapTrap " << first.getName() << " has " << first.getHP()<< " hp and " << first.getEP()<< " ep"<< std::endl;
 	first.beRepaired(8);

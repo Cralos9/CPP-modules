@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:39:18 by cacarval          #+#    #+#             */
-/*   Updated: 2024/04/16 15:45:34 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:12:07 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 Character::Character()
 {
+	for(int i = 0; i < 4;i++)
+		this->_inventory[i] = NULL;
 	this->_inventoryCount = 0;
 }
 
@@ -21,30 +23,33 @@ Character::Character(std::string name)
 {
 	this->_name = name;
 	this->_inventoryCount = 0;
-	this->azul = new t_test();
-	this->head = this->azul;
+	for(int i = 0; i < 4;i++)
+		this->_inventory[i] = NULL;
+	this->list = new spellHolder();
+	this->head = this->list;
 }
 
 Character::Character(const Character &copy)
 {
-	std::cout << "[Character] copy constructor was called" << std::endl;
+	// std::cout << "[Character] copy constructor was called" << std::endl;
+	for(int i = 0; i < 4;i++)
+		this->_inventory[i] = NULL;
 	*this = copy;
 }
 
 Character::~Character()
 {
-	t_test *tmp;
-	this->azul = this->head;
-	for (int i = 0; i < this->_inventoryCount; i++)
-		delete this->_inventory[i];
-	while(this->azul)
+	spellHolder *tmp;
+	this->list = this->head;
+	while(this->list)
 	{
-		std::cout << this->azul<< std::endl;
-		tmp = this->azul;
-		this->azul = this->azul->next;
-		delete tmp->atum;
+		tmp = this->list;
+		this->list = this->list->next;
+		delete tmp->spell;
 		delete tmp;
 	}
+	for (int i = 0; i < this->_inventoryCount; i++)
+		delete this->_inventory[i];
 }
 
 std::string const &Character::getName() const
@@ -66,33 +71,42 @@ Character &Character::operator = (Character const & src)
 
 void Character::equip(AMateria *m)
 {
-	if (this->_inventoryCount < 3)
-	{
-		// std::cout << this->_name << " equiped " << m->getType() << std::endl;
-		if (this->_inventoryCount == 0 || this->_inventory[--this->_inventoryCount] != m)
-			this->_inventory[this->_inventoryCount++] = m;
-		else
+	if (m == 0)
+		std::cout << "Materia doesn't exist" << std::endl;
+	else if (m->flag)
 			std::cout << "Materia is already equiped"<< std::endl;
-	}
 	else
-		std::cout << "Inventory is full" << std::endl;
+	{
+		for(int i = 0; i < 4; i++)
+		{
+				if (this->_inventory[i] == NULL && !m->flag)
+				{
+					this->_inventory[i] = m;
+					this->_inventoryCount++;
+					m->flag = 1;
+					break;
+				}
+		}
+	}
+	// else
+	// 	std::cout << "Inventory is full" << std::endl;
 }
 
 void Character::unequip(int idx)
 {
-	if(idx >= 0 && idx <= this->_inventoryCount)
+	if(idx >= 0 && idx < this->_inventoryCount)
 	{
 		std::cout << "Unequipped" << std::endl;
-		this->azul->atum = this->_inventory[idx];
+		this->list->spell = this->_inventory[idx];
+		this->list->next = new spellHolder();
 		this->_inventory[idx] = NULL;
-		this->azul = this->azul->next;
-		this->azul = new t_test();
+		this->list = this->list->next;
 	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 0 && idx <= this->_inventoryCount)
+	if (idx >= 0 && idx < this->_inventoryCount)
 		this->_inventory[idx]->use(target);
 	else
 		std::cout << "No Materia on this index" << std::endl;

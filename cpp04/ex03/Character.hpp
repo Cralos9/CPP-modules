@@ -6,7 +6,7 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:43:02 by cacarval          #+#    #+#             */
-/*   Updated: 2024/04/16 15:34:33 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/04/17 15:28:12 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 #include "ICharacter.hpp"
 
 
-typedef struct s_test
+struct spellHolder
 {
 
-	struct s_test *next;
-	AMateria *atum; 
+	struct spellHolder *next;
+	AMateria *spell; 
 
-}	t_test;
+};
 
 
 class Character : public ICharacter
@@ -45,8 +45,8 @@ class Character : public ICharacter
 	std::string const & getName() const;
 	void unequip(int idx);
 	void use(int idx, ICharacter& target);
-	t_test *azul;
-	t_test *head;
+	spellHolder *list;
+	spellHolder *head;
 };
 
 #endif

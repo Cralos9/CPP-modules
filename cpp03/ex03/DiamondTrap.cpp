@@ -6,14 +6,14 @@
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:38:43 by cacarval          #+#    #+#             */
-/*   Updated: 2024/03/25 10:57:05 by cacarval         ###   ########.fr       */
+/*   Updated: 2024/04/26 10:43:56 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
 DiamondTrap::DiamondTrap(std::string _name):ScavTrap(_name), FragTrap(_name){
-    std::cout << "DiamondTrap Default constructor called" << std::endl;
+    std::cout << "DiamondTrap constructor called" << std::endl;
     new_name = _name;
     ClapTrap::_name = _name + "_clap_name";
     ClapTrap::_hp = 100;
