@@ -5,22 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 10:40:05 by cacarval          #+#    #+#             */
-/*   Updated: 2024/08/30 15:03:58 by cacarval         ###   ########.fr       */
+/*   Created: 2024/08/08 13:36:22 by cacarval          #+#    #+#             */
+/*   Updated: 2024/08/08 14:58:29 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "BitcoinExchange.hpp"
 
-int main(void)
+
+
+int main (int argc, char **argv)
 {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
-	c = b;
-
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
+	if (argc == 2)
+		Bitcoin Teste(argv[1]);
+	else
+		std::cout << "Error: could not open file." << std::endl;
 }

@@ -5,22 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cacarval <cacarval@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 10:40:05 by cacarval          #+#    #+#             */
-/*   Updated: 2024/08/30 15:03:58 by cacarval         ###   ########.fr       */
+/*   Created: 2024/08/12 12:26:14 by cacarval          #+#    #+#             */
+/*   Updated: 2024/08/12 15:20:49 by cacarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "RPN.hpp"
 
-int main(void)
+int main(int argc, char **argv)
 {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
-	c = b;
-
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-	return 0;
+	if (argc == 2)
+	{
+		try
+		{
+			RPN test(argv[1]);
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+	else
+		std::cout << "Wrong Arguments" << std::endl;
 }
